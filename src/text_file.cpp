@@ -26,3 +26,25 @@ std::vector<std::string> readTextFile(const std::string &filename)
 
     return lines;
 }
+
+std::vector<int> readTextFile_asInt(const std::string &filename)
+{
+    std::ifstream inFile(filename);
+
+    std::string line;
+    std::vector<int> lines;
+
+    if (inFile.is_open())
+    {
+        while (std::getline(inFile, line))
+        {
+            lines.push_back(std::stoi(line));
+        }
+
+        inFile.close();
+    } else {
+        std::cout << "Error opening file." << std::endl;
+    }
+
+    return lines;
+}
